@@ -1,0 +1,74 @@
+.task {
+    /*border: 1px solid blue;*/
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 800px;
+}
+
+.taskContent {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    /*border: 1px solid magenta;*/
+}
+
+.taskContent span:first-of-type {
+    /*border: 1px solid red;*/
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    margin: 0;
+    color: white;
+    width: 1.15em;
+    height: 1.15em;
+    border: 2px solid white;
+    border-radius: 0.15em;
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    border-radius: calc(0.15em - 0.08em);
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: #008000;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.textInput {
+    width: 100%;
+    padding: 10px;
+    /*border: 1px solid #dfdfdf;*/
+    outline: none;
+
+
+    border-radius: 12px;
+    padding-block: 12px;
+    padding-inline: 18px;
+    border: 1px solid white;
+    font-size: 1rem;
+}
+
+/*.actions {*/
+/*    border: 1px solid red;*/
+/*    display: flex;*/
+/*}*/
+
+.button {
+    border-radius: 1px;
+    padding: 4px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+}
+
