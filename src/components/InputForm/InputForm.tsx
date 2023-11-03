@@ -1,6 +1,7 @@
 import styles from './InputForm.module.css';
-import {ChangeEvent, FormEvent, useEffect} from 'react';
+import {ChangeEvent, FormEvent} from 'react';
 import {Task} from '../../../interfaces/interfaces.ts';
+import {useTask} from '../../../hooks/useTask.tsx';
 
 interface Props {
 	input: string;
@@ -9,35 +10,18 @@ interface Props {
 	setTask: (taskList: (string | Task)[]) => void;
 }
 
-
 export const InputForm = ({input, setInput, task, setTask}: Props) => {
+	const {addTask} = useTask(input, setInput, task, setTask);
 	
 	const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
 		event.preventDefault();
 		setInput(event.target.value);
 	};
 	
-	const inputData = {
-		id: new Date().getTime(),
-		title: input,
-		completed: false,
-	};
-	
-	const addTask = () => {
-		if (input) {
-			setTask([inputData, ...task]);
-			setInput('');
-		}
-	};
-	
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setTask(addTask);
 	};
-	
-	useEffect(() => {
-		localStorage.setItem('task', JSON.stringify(task));
-	}, [task]);
 	
 	return (
 		<form onSubmit={handleSubmit} className={styles.form}>
