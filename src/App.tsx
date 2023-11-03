@@ -4,24 +4,13 @@ import {Layout} from './components/layout.tsx';
 import {Head} from './components/Head/Head.tsx';
 import {TaskList} from './components/TaskList/TaskList.tsx';
 import {InputForm} from './components/InputForm/InputForm.tsx';
-
-
-const getLocalStorageTask = () => {
-	const list = localStorage.getItem('task');
-	
-	if (!list) {
-		localStorage.setItem('task', JSON.stringify([]));
-		return [];
-	}
-	if (list) {
-		return JSON.parse(list);
-	}
-	
-};
+import {useLocalStorage} from '../hooks/useLocalStorage.ts';
 
 function App() {
+	
+	const {getLocalStorageTodo} = useLocalStorage('task');
 	const [input, setInput] = useState<string>('');
-	const [task, setTask] = useState(getLocalStorageTask());
+	const [task, setTask] = useState(getLocalStorageTodo());
 	
 	return (
 		<Layout>

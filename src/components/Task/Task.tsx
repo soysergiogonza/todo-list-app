@@ -1,17 +1,26 @@
 import styles from './Task.module.css';
 import {useState} from 'react';
 
-export const Task = ({todo, setTask, allTasks}) => {
+interface Props {
+	todo: {
+		id: number;
+		title: string;
+	};
+	setTask: (updatedTasks: { title: string }[]) => void;
+	allTasks: [];
+}
+
+export const Task = ({todo, setTask, allTasks}: Props) => {
 	const [edit, setEdit] = useState<boolean>(false);
 	const [editedText, setEditedText] = useState<string>(todo.title);
 	
 	const handleRemove = () => {
-		const updatedTasks = allTasks.filter((taskItem) => taskItem.id !== todo.id);
+		const updatedTasks = allTasks.filter(({id}): boolean => id !== todo.id);
 		setTask(updatedTasks);
 	};
 	
 	const handleEdit = () => {
-		setEdit(true); // Habilitar la edición
+		setEdit(true);
 	};
 	
 	const handleSaveEdit = () => {

@@ -1,21 +1,30 @@
 import {useEffect} from 'react';
+import {Task} from '../interfaces/interfaces.ts';
+import {useLocalStorage} from './useLocalStorage.ts';
 
-export const useTask = (input, setInput, task, setTasks) => {
-	const inputData = {
+
+export const useTask = (
+	input: string,
+	setInput: (value: string) => string,
+	task: Task[],
+	setTask: (tasks: Task[]) => Task[]
+) => {
+	const inputData: Task = {
 		id: new Date().getTime(),
 		title: input,
 		completed: false,
 	};
 	const addTask = () => {
 		if (input) {
-			setTasks([inputData, ...task]);
+			setTask([inputData, ...task]);
 			setInput('');
 		}
 	};
 	
+	const {setLocalStorageTodo} = useLocalStorage('task', task);
 	useEffect(() => {
-		localStorage.setItem('task', JSON.stringify(task));
-	}, [task]);
+		setLocalStorageTodo();
+	}, [setLocalStorageTodo]);
 	
 	return {addTask};
 };

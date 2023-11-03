@@ -1,16 +1,9 @@
 import styles from './InputForm.module.css';
 import {ChangeEvent, FormEvent} from 'react';
-import {Task} from '../../../interfaces/interfaces.ts';
+import {ComponentProps} from '../../../interfaces/interfaces.ts';
 import {useTask} from '../../../hooks/useTask.tsx';
 
-interface Props {
-	input: string;
-	setInput: (value: string) => string;
-	task: Task[];
-	setTask: (taskList: (string | Task)[]) => void;
-}
-
-export const InputForm = ({input, setInput, task, setTask}: Props) => {
+export const InputForm = ({input, setInput, task, setTask}: ComponentProps) => {
 	const {addTask} = useTask(input, setInput, task, setTask);
 	
 	const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
