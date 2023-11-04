@@ -5,12 +5,13 @@ import {Head} from './components/Head/Head.tsx';
 import {TaskList} from './components/TaskList/TaskList.tsx';
 import {InputForm} from './components/InputForm/InputForm.tsx';
 import {useLocalStorage} from '../hooks/useLocalStorage.ts';
+import {Task} from '../interfaces/interfaces.ts';
 
 function App() {
 	
 	const {getLocalStorageTodo} = useLocalStorage('task');
 	const [input, setInput] = useState<string>('');
-	const [task, setTask] = useState(getLocalStorageTodo());
+	const [task, setTask] = useState<Task[]>(getLocalStorageTodo());
 	
 	return (
 		<Layout>
@@ -21,7 +22,7 @@ function App() {
 				task={task}
 				setTask={setTask}
 			/>
-			<TaskList task={task} setTask={setTask}/>
+			<TaskList task={task} setTask={setTask} input={input} setInput={setInput}/>
 		</Layout>
 	);
 }

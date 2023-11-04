@@ -1,39 +1,44 @@
-import styles from './Task.module.css';
+import styles from './Todo.module.css';
 import {useState} from 'react';
+import {useTask} from '../../../hooks/useTask';
+import {Task} from '../../../interfaces/interfaces.ts';
 
 interface Props {
-	todo: {
-		id: number;
-		title: string;
-	};
-	setTask: (updatedTasks: { title: string }[]) => void;
-	allTasks: [];
+	todo: Task;
+	setTask: (tasks: Task[] | (() => void)) => Task[];
+	input: string;
+	setInput: (value: string) => string;
+	task: Task[];
 }
 
-export const Task = ({todo, setTask, allTasks}: Props) => {
+export const Todo = ({todo, setTask, input, setInput, task}: Props) => {
 	const [edit, setEdit] = useState<boolean>(false);
 	const [editedText, setEditedText] = useState<string>(todo.title);
+	const {removeTask, updateTask} = useTask(
+		input,
+		setInput,
+		task,
+		setTask,
+		todo,
+		editedText,
+	);
 	
 	const handleRemove = () => {
-		const updatedTasks = allTasks.filter(({id}): boolean => id !== todo.id);
-		setTask(updatedTasks);
+		setTask(removeTask);
 	};
 	
 	const handleEdit = () => {
 		setEdit(true);
 	};
 	
-	const handleSaveEdit = () => {
-		const updatedTasks = allTasks.map((taskItem) => {
-			if (taskItem.id === todo.id) {
-				return {...taskItem, title: editedText};
-			}
-			return taskItem;
-		});
-		
-		setTask(updatedTasks);
-		setEdit(false);
+	
+	const handleSaveEdit = ({key, type}: never) => {
+		if (key === 'Enter' || type === 'click') {
+			setTask(updateTask);
+			setEdit(false);
+		}
 	};
+	
 	
 	return (
 		<div className={styles.task}>
@@ -43,7 +48,8 @@ export const Task = ({todo, setTask, allTasks}: Props) => {
 					<input
 						type="text"
 						value={editedText}
-						onChange={(e) => setEditedText(e.target.value)}
+						onChange={(event) => setEditedText(event.target.value)}
+						onKeyDown={handleSaveEdit}
 						className={styles.textInput}
 					/>
 				) : (
