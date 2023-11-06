@@ -46,14 +46,19 @@ export const Todo = ({todo, setTask, input, setInput, task}: Props) => {
 			<div className={styles.taskContent}>
 				{edit ? (
 					<input
+						aria-label="todo"
 						type="text"
 						value={editedText}
 						onChange={(event) => setEditedText(event.target.value)}
 						onKeyDown={handleSaveEdit}
 						className={styles.textInput}
+						autoFocus
+						required
+						maxLength={50}
+						minLength={3}
 					/>
 				) : (
-					<span>{todo.title}</span>
+					<span data-testid="todoTitle">{todo.title}</span>
 				)}
 				<div>
 					{edit ? (

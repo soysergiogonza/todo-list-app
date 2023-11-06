@@ -19,6 +19,7 @@ export const InputForm = ({input, setInput, task, setTask}: ComponentProps) => {
 	return (
 		<form onSubmit={handleSubmit} className={styles.form}>
 			<input
+				aria-label="Agregar tarea"
 				onChange={handleChange}
 				className={styles.input}
 				type="text"
