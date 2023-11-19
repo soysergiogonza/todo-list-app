@@ -1,28 +1,31 @@
-# React + TypeScript + Vite
+# Todo Application
+***
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+### Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a simple todo application that allows users to create, read, update, and delete todo items. The application is built using Next.js and TypeScript. It is deployed on Vercel and can be accessed [here](https://www.sergiogonzalez.co/).
 
-## Expanding the ESLint configuration
+### Purpose
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. The purpose of this application is to showcase my skills as a developer. It serves as a practical project to enhance my proficiency in using React.js, Next.js, and TypeScript.
+2. Implement a clean and attractive design to improve my ability to create visually appealing UIs.
+3. Understand how to handle state management as the application grows and the complexity of the state increases.
+4. Experiment with different methods of state management, such as the Context API.
+5. If the application grows, I plan to implement another state management library like Redux or TanStack React-Query in separate branches to compare performance and evaluate the pros and cons of each.
 
-- Configure the top-level `parserOptions` property like this:
+### Objectives
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+#### 1. Modular Architecture
+- [x] The application is divided into components that are independent of each other. These components can be reused in other parts of the application.
+- [x] Implement good architectural practices such as separation of concerns and scalability.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# todo-list-app1
+#### 2. TypeScript Integration
+- [x] The application is built using TypeScript to enhance the development experience and prevent bugs in the future.
+
+#### 3. E2E Testing
+- [x] The application is tested using Playwright to ensure that it functions as expected.
+
+#### 4. Documentation
+- [x] The application is well-documented to improve code readability and make it more accessible for other developers.

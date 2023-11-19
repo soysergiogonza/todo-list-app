@@ -47,6 +47,7 @@ export const Todo = ({todo, setTask, input, setInput, task}: Props) => {
 				{edit ? (
 					<input
 						aria-label="todo"
+						data-testid="editInput"
 						type="text"
 						value={editedText}
 						onChange={(event) => setEditedText(event.target.value)}
@@ -62,11 +63,11 @@ export const Todo = ({todo, setTask, input, setInput, task}: Props) => {
 				)}
 				<div>
 					{edit ? (
-						<button className={styles.button} onClick={handleSaveEdit}>Guardar</button>
+						<button className={styles.button} onClick={handleSaveEdit} data-testid="saveButton">Guardar</button>
 					) : (
 						<div className={styles.actions}>
-							<button className={styles.button} onClick={handleEdit}>Editar</button>
-							<button className={styles.button} onClick={handleRemove}>Eliminar</button>
+							<button className={styles.button} onClick={handleEdit} data-testid="editButton">Editar</button>
+							<button className={styles.button} onClick={handleRemove} data-testid='deleteButton'>Eliminar</button>
 						</div>
 					)}
 				</div>
