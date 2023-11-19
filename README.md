@@ -5,7 +5,7 @@
 
 ### Introduction
 
-This is a simple todo application that allows users to create, read, update, and delete todo items. The application is built using Next.js and TypeScript. It is deployed on Vercel and can be accessed [here](https://www.sergiogonzalez.co/).
+This is a simple todo application that allows users to create, read, update, and delete todo items. The application is built using Next.js and TypeScript. It is deployed on Vercel and can be accessed [here](https://soysergiogonza.github.io/todo-list-app/).
 
 ### Purpose
 
