@@ -11,6 +11,7 @@ function App() {
 	
 	const {getLocalStorageTodo} = useLocalStorage('task');
 	const [input, setInput] = useState<string>('');
+	// @ts-ignore
 	const [task, setTask] = useState<Task[]>(getLocalStorageTodo());
 	
 	return (
