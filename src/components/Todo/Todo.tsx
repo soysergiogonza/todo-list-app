@@ -2,16 +2,14 @@ import styles from './Todo.module.css';
 import {useState} from 'react';
 import {useTask} from '../../../hooks/useTask';
 import {Task} from '../../../interfaces/interfaces.ts';
+import {useTodoContext} from '../../../hooks/useTodoContext.tsx';
 
 interface Props {
 	todo: Task;
-	setTask: (tasks: Task[] | (() => void)) => Task[];
-	input: string;
-	setInput: (value: string) => string;
-	task: Task[];
 }
 
-export const Todo = ({todo, setTask, input, setInput, task}: Props) => {
+export const Todo = ({todo}: Props) => {
+	const {input, setInput, task, setTask} = useTodoContext();
 	const [edit, setEdit] = useState<boolean>(false);
 	const [editedText, setEditedText] = useState<string>(todo.title);
 	const {removeTask, updateTask} = useTask(
@@ -67,7 +65,7 @@ export const Todo = ({todo, setTask, input, setInput, task}: Props) => {
 					) : (
 						<div className={styles.actions}>
 							<button className={styles.button} onClick={handleEdit} data-testid="editButton">Editar</button>
-							<button className={styles.button} onClick={handleRemove} data-testid='deleteButton'>Eliminar</button>
+							<button className={styles.button} onClick={handleRemove} data-testid="deleteButton">Eliminar</button>
 						</div>
 					)}
 				</div>

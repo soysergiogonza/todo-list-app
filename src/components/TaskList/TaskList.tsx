@@ -1,15 +1,16 @@
 import {Todo} from '../Todo/Todo.tsx';
-import {ComponentProps, Task} from '../../../interfaces/interfaces.ts';
+import {Task} from '../../../interfaces/interfaces.ts';
+import {useTodoContext} from '../../../hooks/useTodoContext.tsx';
 
-export const TaskList = ({task, setTask, input, setInput}: ComponentProps) => {
+export const TaskList = () => {
+	
+	const {task} = useTodoContext();
+	
 	return (
 		<section>
-			{
-				task.map((todo: Task) => {
-					return (
-						<Todo key={todo.id} todo={todo} setTask={setTask} input={input} setInput={setInput} task={task}/>);
-				})
-			}
+			{task.map((todo: Task) => (
+				<Todo key={todo.id} todo={todo}/>
+			))}
 		</section>
 	);
 };

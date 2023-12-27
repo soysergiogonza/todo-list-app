@@ -1,9 +1,10 @@
 import styles from './InputForm.module.css';
 import {ChangeEvent, FormEvent} from 'react';
-import {ComponentProps} from '../../../interfaces/interfaces.ts';
 import {useTask} from '../../../hooks/useTask.tsx';
+import {useTodoContext} from '../../../hooks/useTodoContext.tsx';
 
-export const InputForm = ({input, setInput, task, setTask}: ComponentProps) => {
+export const InputForm = () => {
+	const {input, setInput, task, setTask} = useTodoContext();
 	const {addTask} = useTask(input, setInput, task, setTask);
 	
 	const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
